@@ -8,14 +8,16 @@ import java.net.Socket;
 
 import javax.swing.ImageIcon;
 
+import client.gui.GUIControler;
+
 public class ScreenSender extends Thread {
 	
-	Socket socket = null;
+	ClientMain cMain = null;
 	Robot robot = null;
 	Rectangle rectangle = null;
 	
-	public ScreenSender(Socket s, Robot rob, Rectangle r) {
-		socket = s;
+	public ScreenSender(ClientMain cm, Robot rob, Rectangle r) {
+		cMain=cm;
 		robot = rob;
 		rectangle = r;
 		start();
@@ -24,7 +26,7 @@ public class ScreenSender extends Thread {
 	@Override
 	public void run() {
 		try {
-			ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
+			ObjectOutputStream oos = new ObjectOutputStream(cMain.socket.getOutputStream());
 			oos.writeObject(rectangle);
 			
 			while(true) {
@@ -38,8 +40,8 @@ public class ScreenSender extends Thread {
 			}
 			
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			cMain.programTerminatedConnectionClosing();
+			GUIControler.serverDisconnected();
 		}
 		
 	}

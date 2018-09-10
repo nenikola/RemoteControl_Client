@@ -1,7 +1,7 @@
 package client;
 
 public enum EnumCommands {
-
+	PROGRAM_TERMINATED(0),
 	PRESS_MOUSE(-1),
     RELEASE_MOUSE(-2),
     PRESS_KEY(-3),

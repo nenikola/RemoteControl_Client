@@ -6,7 +6,10 @@ import java.awt.GraphicsEnvironment;
 import java.awt.Rectangle;
 import java.awt.Robot;
 import java.awt.Toolkit;
+import java.io.IOException;
 import java.net.Socket;
+
+import client.gui.GUIControler;
 
 public class ClientMain {
 	
@@ -28,8 +31,8 @@ public class ClientMain {
 			Dimension dim = toolkit.getScreenSize();
 			rectangle = new Rectangle(dim);
 			robot = new Robot(gd);
-			new ScreenSender(socket,robot,rectangle);
-			new CommandsReceiver(socket, robot);
+			new ScreenSender(this,robot,rectangle);
+			new CommandsReceiver(this, robot);
 						
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -37,7 +40,14 @@ public class ClientMain {
 		}
 		
 	}
-	
+	public void programTerminatedConnectionClosing(){
+		try {
+			socket.close();
+			socket=null;
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 
 
 }

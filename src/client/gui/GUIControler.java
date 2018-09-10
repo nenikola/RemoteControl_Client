@@ -1,5 +1,7 @@
 package client.gui;
 
+import javax.swing.JOptionPane;
+
 import client.*;
 
 
@@ -20,5 +22,13 @@ public class GUIControler {
 		csw.setVisible(false);
 		cww=new ClientWorkingWindow(ipAdress,port);
 		cww.setVisible(true);
+	}
+	public static void serverDisconnected(){
+		cww.setVisible(false);
+		cww=null;
+		JOptionPane.showMessageDialog(csw, "Server disconnected!", "Program terminated", JOptionPane.INFORMATION_MESSAGE,null);
+		csw.textInputReset();
+		csw.setVisible(true);
+		
 	}
 }

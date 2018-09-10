@@ -7,13 +7,14 @@ import java.io.IOException;
 import java.net.Socket;
 import java.util.Scanner;
 
+import client.gui.GUIControler;
+
 public class CommandsReceiver extends Thread 
 {
-	Socket socket = null;
+	ClientMain cMain = null;
 	Robot robot = null;
-	
-	public CommandsReceiver(Socket s, Robot r) {
-		socket = s;
+	public CommandsReceiver(ClientMain cm, Robot r) {
+		cMain=cm;
 		robot = r;
 		start();
 	}
@@ -23,7 +24,7 @@ public class CommandsReceiver extends Thread
 	public void run() {
 		Scanner scanner = null;
 		try {
-			scanner = new Scanner(socket.getInputStream());
+			scanner = new Scanner(cMain.socket.getInputStream());
 
             while(true){
 
@@ -45,15 +46,18 @@ public class CommandsReceiver extends Thread
                     case -5:
                         robot.mouseMove(scanner.nextInt(), scanner.nextInt());
                     break;
+                    case 0:
+                    	cMain.programTerminatedConnectionClosing();
+                    	GUIControler.serverDisconnected();
+                    break;
+                    	
                 }
             }
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			cMain.programTerminatedConnectionClosing();
+			GUIControler.serverDisconnected();
+			
 		}
-		
-		while(true) {
-		
-		}
+
 	}
 }

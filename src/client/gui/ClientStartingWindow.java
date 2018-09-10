@@ -121,4 +121,8 @@ public class ClientStartingWindow extends JFrame {
 		button.setBounds(79, 166, 97, 25);
 		panel_1.add(button);
 	}
+	public void textInputReset(){
+		textField.setText("");
+		textField_1.setText("");
+	}
 }
