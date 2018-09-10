@@ -56,6 +56,7 @@ public class CommandsReceiver extends Thread
 		} catch (IOException e) {
 			cMain.programTerminatedConnectionClosing();
 			GUIControler.serverDisconnected();
+			this.destroy();
 			
 		}
 
