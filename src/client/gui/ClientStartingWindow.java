@@ -96,13 +96,13 @@ public class ClientStartingWindow extends JFrame {
 		JLabel lblTypeServerIpv = new JLabel("Type server's IPv4 adress:");
 		lblTypeServerIpv.setForeground(SystemColor.controlDkShadow);
 		lblTypeServerIpv.setFont(new Font("Yu Gothic UI", Font.PLAIN, 14));
-		lblTypeServerIpv.setBounds(39, 13, 158, 16);
+		lblTypeServerIpv.setBounds(39, 13, 176, 16);
 		panel_1.add(lblTypeServerIpv);
 		
 		JLabel lblTypeServersListening = new JLabel("Type server's listening port:");
 		lblTypeServersListening.setForeground(SystemColor.controlDkShadow);
 		lblTypeServersListening.setFont(new Font("Yu Gothic UI", Font.PLAIN, 14));
-		lblTypeServersListening.setBounds(39, 95, 176, 16);
+		lblTypeServersListening.setBounds(39, 95, 199, 16);
 		panel_1.add(lblTypeServersListening);
 		
 		JButton button = new JButton("");

@@ -94,7 +94,7 @@ public class ClientWorkingWindow extends JFrame {
 		contentPane.add(textField_1);
 		
 		textField.setText(ip);
-		textField_1.setText(String.format("$d", port));
+		textField_1.setText(String.format("%d", port));
 		
 		JLabel label_1 = new JLabel("");
 		label_1.setIcon(new ImageIcon(ClientWorkingWindow.class.getResource("/images/TextInput.png")));
