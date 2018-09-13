@@ -16,12 +16,10 @@ public class ClientMain {
 	Socket socket = null;	
 	
 	
-	public void connection(String ip, int port) {
+	public void connection(String ip, int port)throws Exception {
 	
 		Robot robot = null;
 		Rectangle rectangle = null;
-		
-		try {
 
 			socket = new Socket(ip,port);
 						
@@ -30,14 +28,11 @@ public class ClientMain {
 			Toolkit toolkit = Toolkit.getDefaultToolkit();
 			Dimension dim = toolkit.getScreenSize();
 			rectangle = new Rectangle(dim);
-			robot = new Robot(gd);
+			robot = new Robot(gd);	
 			new ScreenSender(this,robot,rectangle);
 			new CommandsReceiver(this, robot);
 						
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+
 		
 	}
 	public void programTerminatedConnectionClosing(){

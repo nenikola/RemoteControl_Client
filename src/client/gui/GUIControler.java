@@ -11,17 +11,21 @@ public class GUIControler {
 	private static ClientMain cm;
 
 	public static void main(String[] args){
-		csw=new ClientStartingWindow();
-		csw.setVisible(true);
+		showStartingWindow();
 		
 	}
 	
 	public static void startClient(String ipAdress, int port){
 		cm=new ClientMain();
-		cm.connection(ipAdress, port);
-		csw.setVisible(false);
-		cww=new ClientWorkingWindow(ipAdress,port);
-		cww.setVisible(true);
+		try {
+			cm.connection(ipAdress, port);
+			csw.setVisible(false);
+			cww=new ClientWorkingWindow(ipAdress,port);
+			cww.setVisible(true);
+		} catch (Exception e) {
+			serverNotAvailable();
+		}
+
 	}
 	public static void serverDisconnected(){
 		cww.setVisible(false);
@@ -30,5 +34,14 @@ public class GUIControler {
 		csw.textInputReset();
 		csw.setVisible(true);
 		
+	}
+	public static void showStartingWindow(){
+		csw=new ClientStartingWindow();
+		csw.setVisible(true);
+	}
+	public static void serverNotAvailable(){
+		showStartingWindow();
+		JOptionPane.showMessageDialog(csw, "Server not available!", "Program terminated", JOptionPane.INFORMATION_MESSAGE,null);
+
 	}
 }
