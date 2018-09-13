@@ -40,6 +40,8 @@ public class GUIControler {
 		csw.setVisible(true);
 	}
 	public static void serverNotAvailable(){
+		csw.setVisible(false);
+		csw=null;
 		showStartingWindow();
 		JOptionPane.showMessageDialog(csw, "Server not available!", "Program terminated", JOptionPane.INFORMATION_MESSAGE,null);
 

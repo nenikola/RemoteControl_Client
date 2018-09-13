@@ -53,7 +53,7 @@ public class CommandsReceiver extends Thread
                     	
                 }
             }
-		} catch (IOException e) {
+		} catch (Exception e) {
 			scanner.close();
 			cMain.programTerminatedConnectionClosing();
 			GUIControler.serverDisconnected();
