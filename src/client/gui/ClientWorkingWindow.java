@@ -32,6 +32,7 @@ public class ClientWorkingWindow extends JFrame {
 		setBackground(new Color(1.0f,1.0f,1.0f,0.0f));
 
 		setBounds(100, 100, 250, 250);
+		setIconImage(new ImageIcon(ClientWorkingWindow.class.getResource("/images/Logo.png")).getImage());
 		contentPane = new JPanel();
 		contentPane.setBackground(SystemColor.scrollbar);
 		contentPane.setBorder(null);

@@ -30,6 +30,7 @@ public class ClientStartingWindow extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 250, 250);
 		setLocationRelativeTo(null);
+		setIconImage(new ImageIcon(ClientStartingWindow.class.getResource("/images/Logo.png")).getImage());
 		contentPane = new JPanel();
 		contentPane.setBackground(SystemColor.scrollbar);
 		contentPane.setBorder(new LineBorder(new Color(160, 160, 160), 0, true));
@@ -108,7 +109,14 @@ public class ClientStartingWindow extends JFrame {
 		JButton button = new JButton("");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				GUIControler.startClient(textField.getText(), Integer.parseInt(textField_1.getText()));
+				try {
+				String ip = textField.getText();
+				int port = Integer.parseInt(textField_1.getText());
+				GUIControler.startClient(ip, port);
+				} catch (NumberFormatException ex){
+					GUIControler.serverNotAvailable();
+				}
+				
 			}
 		});
 		button.setRolloverIcon(new ImageIcon(ClientStartingWindow.class.getResource("/images/button-ok-small.png")));

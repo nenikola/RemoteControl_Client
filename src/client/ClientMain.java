@@ -28,7 +28,7 @@ public class ClientMain {
 			
 			rectangle = new Rectangle(dim);
 			robot = new Robot(gd);	
-			s
+			
 			new ScreenSender(this,robot,rectangle);
 			new CommandsReceiver(this, robot);
 						
