@@ -27,7 +27,7 @@ public class CommandsReceiver extends Thread
 			scanner = new Scanner(cMain.socket.getInputStream());
 
             while(true){
-
+            	if(scanner!=null){
                 int command = scanner.nextInt();
 
                 switch(command){
@@ -52,6 +52,7 @@ public class CommandsReceiver extends Thread
                     break;
                     	
                 }
+            	}
             }
 		} catch (IOException e) {
 			scanner.close();

@@ -12,14 +12,12 @@ import java.net.Socket;
 import client.gui.GUIControler;
 
 public class ClientMain {
-	
 	Socket socket = null;	
 	
 	
 	public void connection(String ip, int port)throws Exception {
-	
-		Robot robot = null;
-		Rectangle rectangle = null;
+			Robot robot = null;
+			Rectangle rectangle = null;
 
 			socket = new Socket(ip,port);
 						
@@ -27,8 +25,10 @@ public class ClientMain {
 			GraphicsDevice gd = ge.getDefaultScreenDevice();
 			Toolkit toolkit = Toolkit.getDefaultToolkit();
 			Dimension dim = toolkit.getScreenSize();
+			
 			rectangle = new Rectangle(dim);
 			robot = new Robot(gd);	
+			s
 			new ScreenSender(this,robot,rectangle);
 			new CommandsReceiver(this, robot);
 						
